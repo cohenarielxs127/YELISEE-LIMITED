@@ -1,67 +1,1167 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAP Garland, LLC</title>
+  <title>YELISEE LIMITED | Women's Fashion Boutique</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #ffffff;
+      --panel: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #ec4899;
+      --accent-soft: rgba(236, 72, 153, 0.1);
+      --accent-strong: rgba(236, 72, 153, 0.25);
+      --border: #e5e7eb;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.15);
+      --nav-bg: rgba(255, 255, 255, 0.95);
+    }
+
+    body.dark-mode {
+      --bg: #020617;
+      --bg-alt: #020617;
+      --panel: #020617;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --accent: #fb7185;
+      --accent-soft: rgba(251, 113, 133, 0.18);
+      --accent-strong: rgba(251, 113, 133, 0.35);
+      --border: #1f2937;
+      --shadow-soft: 0 22px 55px rgba(15, 23, 42, 0.9);
+      --nav-bg: rgba(15, 23, 42, 0.96);
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #f0f0f0;
-      color: #333;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(236, 72, 153, 0.15), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.16), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER */
+
     header {
-      background-color: #003366;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
     }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.7rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: conic-gradient(from 200deg,#fb7185,#f97316,#a855f7,#22d3ee,#fb7185);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.8rem;
+      box-shadow: 0 0 0 3px rgba(248, 250, 252, 0.9);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-text span:first-child {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg,#ec4899,#a855f7,#22d3ee);
+      transition: width 0.22s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .mode-toggle {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.8rem;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+      background: var(--panel);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    }
+
+    .mode-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.25);
+      background: var(--accent-soft);
+    }
+
+    /* LAYOUT */
+
+    main {
+      margin-top: 74px;
+    }
+
     section {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+      padding: 4.5rem 1.6rem;
     }
-    h1, h2 {
-      color: #003366;
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
     }
-    .contact {
-      background: #fff;
-      padding: 20px;
-      border-left: 5px solid #003366;
-      margin-top: 30px;
+
+    h1, h2, h3 {
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.97rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.2rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-strong);
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(120deg,#ec4899,#a855f7,#22c55e,#22d3ee);
+      background-size: 220% 220%;
+      color: #f9fafb;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 18px 40px rgba(190, 24, 93, 0.4);
+      text-decoration: none;
+      white-space: nowrap;
+      animation: gradientShift 8s ease-in-out infinite;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 22px 52px rgba(190, 24, 93, 0.6);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: none;
+      animation: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--accent-soft);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.2);
+    }
+
+    @keyframes gradientShift {
+      0%,100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* HERO */
+
+    #home {
+      padding-top: 4.4rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw + 1.6rem, 3.2rem);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(120deg,#ec4899,#a855f7,#22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hero-highlights div {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-highlights span.icon {
+      font-size: 1.05rem;
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 260px;
+    }
+
+    .hero-main {
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transform-origin: center;
+      animation: floatMain 9s ease-in-out infinite;
+    }
+
+    .hero-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-card {
+      position: absolute;
+      bottom: 10%;
+      left: -5%;
+      padding: 0.8rem 1rem;
+      min-width: 220px;
+      border-radius: 18px;
+      background: var(--panel);
+      border: 1px solid var(--accent-strong);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.8rem;
+      color: var(--muted);
+      animation: floatCard 7s ease-in-out infinite;
+    }
+
+    .hero-card strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: 6%;
+      right: -6%;
+      padding: 0.85rem 1.3rem;
+      border-radius: 999px;
+      background: var(--panel);
+      border: 1px solid var(--accent-strong);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      box-shadow: var(--shadow-soft);
+      animation: floatCard 8s ease-in-out infinite 0.4s;
+    }
+
+    .hero-badge strong {
+      display: block;
+      font-size: 1rem;
+      color: #16a34a;
+      margin-bottom: 0.12rem;
+    }
+
+    @keyframes floatMain {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes floatCard {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* COLLECTIONS */
+
+    #collections {
+      background: var(--bg-alt);
+    }
+
+    body.dark-mode #collections {
+      background: #020617;
+    }
+
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .collection-card {
+      background: var(--panel);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease, transform 0.2s;
+    }
+
+    .collection-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .collection-image {
+      position: relative;
+      height: 210px;
+      overflow: hidden;
+    }
+
+    .collection-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.06);
+      transition: transform 0.7s ease;
+    }
+
+    .collection-card:hover .collection-image img {
+      transform: scale(1.12);
+    }
+
+    .collection-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      color: #f9fafb;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .collection-body {
+      padding: 1rem 1.1rem 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .collection-body h3 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .collection-body p {
+      color: var(--muted);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.7rem;
+      font-size: 0.78rem;
+    }
+
+    .chip {
+      padding: 0.22rem 0.6rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-strong);
+      color: var(--muted);
+    }
+
+    /* HIGHLIGHTS / EDITOR PICKS */
+
+    #highlights {
+      background:
+        radial-gradient(circle at top, rgba(236, 72, 153, 0.14), transparent 60%),
+        var(--bg);
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 2.3rem;
+      align-items: center;
+    }
+
+    .highlights-images {
+      position: relative;
+      min-height: 260px;
+    }
+
+    .highlight-main {
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .highlight-main.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .highlight-floating {
+      position: absolute;
+      inset: auto 3% -8% auto;
+      max-width: 220px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      animation: floatMain 10s ease-in-out infinite;
+    }
+
+    .highlights-text p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .highlights-list {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .highlights-list li {
+      margin-bottom: 0.4rem;
+      color: var(--muted);
+    }
+
+    /* REVIEWS */
+
+    #reviews {
+      background: var(--bg-alt);
+    }
+
+    body.dark-mode #reviews {
+      background: #020617;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 2.3rem;
+      align-items: center;
+    }
+
+    .reviews-intro p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .reviews-score {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .reviews-score strong {
+      font-size: 2rem;
+    }
+
+    .reviews-stars {
+      color: #facc15;
+      font-size: 1.1rem;
+    }
+
+    .reviews-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .review-card {
+      background: var(--panel);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.86rem;
+      color: var(--muted);
+      position: relative;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .review-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+    }
+
+    .review-name {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    .review-tag {
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .quote-mark {
+      position: absolute;
+      right: 0.9rem;
+      top: 0.5rem;
+      font-size: 1.5rem;
+      color: rgba(148, 163, 184, 0.3);
+    }
+
+    /* CONTACT */
+
+    #contact {
+      background: #020617;
+      color: #f9fafb;
+    }
+
+    .contact-card {
+      background: var(--panel);
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      padding: 2rem 1.7rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+    }
+
+    .contact-info p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.8rem 1.6rem;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.1rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-form label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.03);
+      color: inherit;
+      font: inherit;
+      resize: vertical;
+    }
+
+    body.dark-mode .contact-form input,
+    body.dark-mode .contact-form textarea {
+      background: rgba(15, 23, 42, 0.85);
+      color: #f9fafb;
+    }
+
+    .contact-form small {
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
     footer {
-      background-color: #003366;
-      color: white;
+      padding: 1.7rem 1.4rem 2.4rem;
       text-align: center;
-      padding: 15px;
-      margin-top: 50px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* GENERIC FADE-IN */
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 960px) {
+      .hero,
+      .highlights-grid,
+      .reviews-grid,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-media {
+        order: -1;
+      }
+
+      .hero-card {
+        left: 4%;
+      }
+
+      .hero-badge {
+        right: 2%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-wrap: wrap;
+      }
+
+      nav ul {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-top: 0.25rem;
+      }
+
+      section {
+        padding: 3.6rem 1.2rem;
+      }
+
+      #home {
+        padding-top: 4rem;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+      }
+
+      .contact-card {
+        padding: 1.5rem 1.2rem 1.9rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>CAP Garland, LLC</h1>
-    <p>Private Investment Fund</p>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-logo">YE</div>
+        <div class="brand-text">
+          <span>CLOTHES WOMEN SHOP</span>
+          <span>YELISEE LIMITED</span>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#highlights">Highlights</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="modeToggle" class="mode-toggle" type="button">
+        <span id="modeIcon">🌙</span>
+        <span id="modeLabel">Night mode</span>
+      </button>
+    </div>
   </header>
 
-  <section>
-    <h2>About Us</h2>
-    <p>CAP Garland, LLC is a Washington-based private investment fund focused on delivering value through diversified investment strategies.</p>
+  <main>
+    <!-- HERO -->
+    <section id="home">
+      <div class="container hero">
+        <div class="hero-text fade-in">
+          <div class="badge">
+            <span>✨</span>
+            <span>Everyday style for modern women</span>
+          </div>
+          <h1 class="hero-title">
+            Discover <span class="highlight">easy-chic</span> looks for every moment.
+          </h1>
+          <p>
+            YELISEE LIMITED brings curated women’s fashion — from relaxed essentials
+            to statement pieces — all chosen to mix, match and move with you.
+          </p>
+          <div class="hero-actions">
+            <a href="#collections" class="btn">
+              Shop new arrivals
+              <span>↗</span>
+            </a>
+            <a href="#highlights" class="btn btn-outline">
+              View style stories
+            </a>
+          </div>
+          <div class="hero-highlights">
+            <div>
+              <span class="icon">🧵</span>
+              <span>Soft fabrics &amp; flattering fits</span>
+            </div>
+            <div>
+              <span class="icon">🚚</span>
+              <span>Fast shipping across Cyprus</span>
+            </div>
+          </div>
+        </div>
 
-    <h2>Contact</h2>
-    <div class="contact">
-      <p><strong>Address:</strong> 915 W 2nd Ave, Spokane, WA 99201</p>
-      <p><strong>Email:</strong> <a href="mailto:ryanberg@capgarland.shop">ryanberg@capgarland.shop</a></p>
-      <p><strong>Phone:</strong> (509) 822-3850</p>
-    </div>
-  </section>
+        <div class="hero-media">
+          <div class="hero-main fade-in">
+            <img
+              src="https://media-cldnry.s-nbcnews.com/image/upload/newscms/2016_42/1167207/style-squad-lilliana-vazquez-today-161018-tease-01.jpg"
+              alt="Women wearing stylish clothes in a city street"
+            />
+          </div>
+          <div class="hero-card">
+            <strong>YELISEE STYLE NOTE</strong>
+            <span>
+              Build your wardrobe around pieces you can wear three ways:
+              office, weekend and evenings out.
+            </span>
+          </div>
+          <div class="hero-badge">
+            <strong>NEW</strong>
+            <span>Spring / Summer edit</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLECTIONS -->
+    <section id="collections">
+      <div class="container">
+        <h2 class="section-title">Collections</h2>
+        <p class="section-subtitle">
+          Explore our favourite edits — from cosy knits to city-ready tailoring.
+          Mix colours, play with textures and make every outfit feel like you.
+        </p>
+
+        <div class="collections-grid">
+          <article class="collection-card">
+            <div class="collection-image">
+              <img
+                src="https://invita.ro/wp-content/uploads/2019/04/lanidor-21.jpg"
+                alt="Women in casual chic outfits walking outside"
+              />
+              <span class="collection-label">Weekend casual</span>
+            </div>
+            <div class="collection-body">
+              <h3>Soft days off</h3>
+              <p>
+                Relaxed dresses, light knits and denim designed for brunch,
+                errands and everything in between.
+              </p>
+              <div class="chip-row">
+                <span class="chip">Flowy dresses</span>
+                <span class="chip">Relaxed denim</span>
+                <span class="chip">Soft layers</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="collection-card">
+            <div class="collection-image">
+              <img
+                src="https://lifeyet.com/wp-content/uploads/2021/01/hump-collection-1536x864.jpg"
+                alt="Group of women in neutral elegant outfits"
+              />
+              <span class="collection-label">Office &amp; smart</span>
+            </div>
+            <div class="collection-body">
+              <h3>Effortless workwear</h3>
+              <p>
+                Tailored trousers, blouses and blazers that move from meetings
+                to dinner without missing a beat.
+              </p>
+              <div class="chip-row">
+                <span class="chip">Soft tailoring</span>
+                <span class="chip">Neutral tones</span>
+                <span class="chip">Mix &amp; match sets</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="collection-card">
+            <div class="collection-image">
+              <img
+                src="https://i.pinimg.com/originals/7e/d1/c6/7ed1c6edc54dd23fd954b57f7a0f2b6d.jpg"
+                alt="Woman wearing elegant evening dress in city street"
+              />
+              <span class="collection-label">Evening &amp; events</span>
+            </div>
+            <div class="collection-body">
+              <h3>Turn-heads nights</h3>
+              <p>
+                Dresses and sets with subtle shimmer, flattering cuts and
+                details that catch the light.
+              </p>
+              <div class="chip-row">
+                <span class="chip">Little black dress</span>
+                <span class="chip">Occasion pieces</span>
+                <span class="chip">Statement accessories</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section id="highlights">
+      <div class="container highlights-grid">
+        <div class="highlights-images">
+          <div class="highlight-main">
+            <img
+              src="https://lifeyet.com/wp-content/uploads/2021/01/hump-collection-1536x864.jpg"
+              alt="Fashion lookbook with coordinated outfits"
+            />
+          </div>
+          <div class="highlight-floating">
+            <img
+              src="https://invita.ro/wp-content/uploads/2019/04/lanidor-21.jpg"
+              alt="Close-up of women’s outfits and accessories"
+            />
+          </div>
+        </div>
+        <div class="highlights-text fade-in">
+          <h2 class="section-title">How we curate YELISEE looks</h2>
+          <p>
+            Our team selects every piece with real life in mind — clothes that
+            feel good on your skin, fit beautifully and layer easily with what
+            you already own.
+          </p>
+          <p>
+            Each drop is built around a colour story so you can mix prints,
+            textures and silhouettes without overthinking your outfit.
+          </p>
+          <ul class="highlights-list">
+            <li>• Fabrics tested for comfort and drape.</li>
+            <li>• Fits checked on different body shapes.</li>
+            <li>• Colours chosen to combine across collections.</li>
+            <li>• Simple care instructions – wash, wear, repeat.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews">
+      <div class="container reviews-grid">
+        <div class="reviews-intro fade-in">
+          <h2 class="section-title">Customer love</h2>
+          <p>
+            See why women keep coming back to CLOTHES WOMEN SHOP for everyday
+            outfits, last-minute event looks and everything in between.
+          </p>
+          <div class="reviews-score">
+            <div>
+              <strong>4.8 / 5</strong>
+              <div class="reviews-stars">★★★★★</div>
+            </div>
+            <div style="font-size:0.86rem; color:var(--muted);">
+              Based on recent online orders and in-store feedback.
+            </div>
+          </div>
+          <p>
+            From fit questions to styling tips, our team is here to help you
+            feel confident in what you wear.
+          </p>
+        </div>
+
+        <div class="reviews-cards">
+          <article class="review-card">
+            <div class="quote-mark">“</div>
+            <div class="review-header">
+              <div class="review-name">Elena M.</div>
+              <div class="review-tag">Online order</div>
+            </div>
+            <p>
+              “The dress I bought fits perfectly and the fabric is so soft.
+              I received my parcel in two days with a handwritten note — such
+              a sweet touch!”
+            </p>
+          </article>
+
+          <article class="review-card">
+            <div class="quote-mark">“</div>
+            <div class="review-header">
+              <div class="review-name">Nadia K.</div>
+              <div class="review-tag">Work wardrobe refresh</div>
+            </div>
+            <p>
+              “The team helped me pick outfits I can wear to the office and on
+              weekends. Everything mixes together so getting dressed is easy now.”
+            </p>
+          </article>
+
+          <article class="review-card">
+            <div class="quote-mark">“</div>
+            <div class="review-header">
+              <div class="review-name">Sophia L.</div>
+              <div class="review-tag">Event look</div>
+            </div>
+            <p>
+              “I needed a last-minute outfit for a wedding. They suggested a
+              simple dress and statement earrings – I felt amazing all night.”
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact &amp; orders</h2>
+        <p class="section-subtitle">
+          Have a question about sizes, shipping or styling? Send us a message
+          and we’ll be happy to help you build your next favourite outfit.
+        </p>
+
+        <div class="contact-card fade-in">
+          <div class="contact-info">
+            <h3 style="margin-bottom:0.4rem;">YELISEE LIMITED – Clothes Women Shop</h3>
+            <p>
+              Curated women’s clothing and accessories, with friendly support
+              before and after your order.
+            </p>
+
+            <div class="contact-grid">
+              <div>
+                <div class="contact-label">Email</div>
+                <a href="mailto:contact@cerlano.shop">contact@cerlano.shop</a>
+              </div>
+              <div>
+                <div class="contact-label">Phone / WhatsApp</div>
+                <a href="tel:+35795983787">+357 9598 3787</a>
+              </div>
+              <div>
+                <div class="contact-label">Location</div>
+                <div>Cyprus · serving customers nationwide</div>
+              </div>
+            </div>
+
+            <p>
+              For urgent size checks or same-day pick-up options, call or send a
+              message for the fastest reply.
+            </p>
+          </div>
+
+          <form class="contact-form"
+                onsubmit="event.preventDefault(); alert('Thank you – your message has been recorded for demo purposes.');">
+            <div>
+              <label for="name">Full name</label>
+              <input id="name" type="text" placeholder="Your name" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div>
+              <label for="topic">What are you looking for?</label>
+              <input id="topic" type="text" placeholder="Work outfits, event dress, basics, etc." />
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" rows="4"
+                placeholder="Tell us your size, style and what you need help with..."></textarea>
+            </div>
+            <button class="btn" type="submit">
+              Send message
+            </button>
+            <small>We aim to reply within one business day.</small>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 CAP Garland, LLC. All rights reserved.
+    © <span id="year"></span> YELISEE LIMITED · All rights reserved.
   </footer>
+
+  <script>
+    // Theme toggle (day / night)
+    const modeToggle = document.getElementById("modeToggle");
+    const modeLabel = document.getElementById("modeLabel");
+    const modeIcon = document.getElementById("modeIcon");
+
+    function updateMode() {
+      if (document.body.classList.contains("dark-mode")) {
+        modeLabel.textContent = "Day mode";
+        modeIcon.textContent = "🌞";
+      } else {
+        modeLabel.textContent = "Night mode";
+        modeIcon.textContent = "🌙";
+      }
+    }
+
+    modeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      updateMode();
+    });
+
+    // start in light mode (no dark-mode class)
+    updateMode();
+
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document
+      .querySelectorAll(
+        ".fade-in, .collection-card, .highlight-main, .review-card"
+      )
+      .forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
